@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: red;
+            overflow: hidden; /* creates block formatting context */
+        }
+        p{
+            background-color: green;
+            margin: 10px 0;
+        }
+        .newBFC{
+            overflow: hidden;
+        }
+
+        .container2{
+            background-color: blue;
+            overflow: hidden; /* creates block formatting context */
+        }
+        .container2 div{
+            background-color: lightblue;
+            margin: 10px;
+            float: left;
+
+        }
+
+        .container3{
+           border: blue 1px solid;
+        }
+        .container3 p{
+        overflow: hidden;
+        }
+        .floated{
+            background-color: plum;
+            margin: 10px;
+            float: left;
+        }
+        .container4{
+
+        }
+        .column{
+            width: 31.33%;
+            background-color: green;
+            float: left;
+            margin: 0 1%;
+        }
+
+        .column:last-child {
+  float: none;
+  overflow: hidden; 
+}
+    </style>
+</head>
+<body>
+    <h1>Block Formating Context</h1>
+    <!-- //Sibling 1 and Sibling 2 belong to one BFC so there is collapse in marging.
+    //Sibling 2 and Sibling 3 belong to another BFC so there is no collapse in margin. -->
+    <!-- margin collapse -->
+    <div class="container">
+        <p>Sibling 1</p>
+        <p>Sibling 2</p>
+        <div class="newBFC">
+            <p>Sibling 3</p>
+        </div>
+    </div>
+    <br><br>
+    <!-- example 2 -->
+    <!-- clear the float -->
+    <div class="container2">
+        <div>
+            Sibling A
+        </div>
+        <div> Sibling B</div>
+    </div>
+    <br> <br>
+
+    <!-- Using Block Formatting Contexts to Prevent Text Wrapping -->
+    <div class="container3">
+        <div class="floated">
+            Name of Pic
+        </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, totam repellat! Laudantium nobis natus, aut labore, porro nisi, atque ea nulla iusto aliquid architecto mollitia esse harum veritatis quod suscipit totam aspernatur ipsa rerum eaque! Ea esse nulla neque voluptates.</p>
+    </div>
+
+    <br>
+    <!-- Using Block Formatting Contexts in Multi-column Layouts -->
+    <div class="container4">
+        <div class="column">Column 1</div>
+        <div class="column">Column 2</div>
+        <div class="column">Column 3</div>
+
+    </div>
+</body>
+</html>
